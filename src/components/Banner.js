@@ -6,9 +6,9 @@ const imgData = ImagesData.data.cards[0].card.card.imageGridCards.info;
 
 export default Banner = () => {
   return (
-    <div className="img-container">
+    <div className='img-container'>
       {imgData.map((banner) => {
-        return <BannerImage bannerContent={banner} />;
+        return <BannerImage key={banner.id} bannerContent={banner} />;
       })}
     </div>
   );
