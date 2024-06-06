@@ -1,27 +1,30 @@
 import RestaurantDetails from "./RestaurantDetails";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import * as RestaurantJSONdata from "../../assets/data/restaurant-data.json";
 import { RESTAURANT_LIST_URL } from "../../utils/constants";
-
-const restaurantData =
-  RestaurantJSONdata.data.cards[0].card.card.gridElements.infoWithStyle
-    .restaurants;
-
-// const fetchRestaurantList = async () => {
-//   const data = await fetch(RESTAURANT_LIST_URL);
-//   const restaurantData = await data.json();
-//   console.log(restaurantData);
-// };
-// fetchRestaurantList()
+import RestaurantShimmerPage from "./RestaurantShimmerPage";
 
 const RestaurantList = () => {
-  const [restaurantList, setRestaurantList] = useState(restaurantData);
-  const [filteredRestaurantList, setFilteredRestaurantList] =
-    useState(restaurantData);
+  const [restaurantList, setRestaurantList] = useState([]);
+  const [filteredRestaurantList, setFilteredRestaurantList] = useState([]);
   const [searchText, setSearchText] = useState("");
 
-  return (
+  useEffect(() => {
+    console.log("use effect called");
+    fetchRestaurantList();
+  }, []);
+
+  const fetchRestaurantList = async () => {
+    const data = await fetch(RESTAURANT_LIST_URL);
+    const restaurantJSON = await data.json();
+    const restaurantData =
+      restaurantJSON.data.cards[4].card.card.gridElements.infoWithStyle
+        .restaurants;
+    setRestaurantList(restaurantData);
+    setFilteredRestaurantList(restaurantData);
+  };
+
+  return filteredRestaurantList.length ? (
     <div className='main-cont'>
       <div className='filter-cont'>
         <button
@@ -69,6 +72,12 @@ const RestaurantList = () => {
         })}
       </div>
     </div>
+  ) : (
+    // <div className='loader-cont'>
+    //   <h1>Loading...</h1>
+    // </div>
+
+    <RestaurantShimmerPage />
   );
 };
 

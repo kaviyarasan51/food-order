@@ -104,3 +104,25 @@ a:hover {
     margin: 10px;
   }
 }
+
+.login-btn,
+.add-to-cart-btn {
+  width: 100px;
+}
+
+.loader-cont {
+  margin: 0 50px;
+  height: 400px;
+
+  h1 {
+    text-align: center;
+  }
+}
+
+.bg-gray {
+  background-color: #CCC;
+}
+
+.main-min-height {
+  min-height: 400px;
+}
