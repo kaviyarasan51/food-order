@@ -11,6 +11,7 @@ import ContactUs from "./components/ContactUs";
 import Offers from "./components/Offers";
 import Help from "./components/Help";
 import ErrorPage from "./components/ErrorPage";
+import RestaurantOverview from "./components/RestaurantOverview";
 
 const AppLayout = () => {
   return (
@@ -47,6 +48,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/help",
         element: <Help />,
+      },
+      {
+        path: "/details/:id",
+        element: <RestaurantOverview />,
       },
     ],
   },
