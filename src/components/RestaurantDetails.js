@@ -1,8 +1,15 @@
 import { RESTAURANT_LIST_IMAGE_URL } from "../../utils/constants";
 
 const RestaurantDetails = (props) => {
-  const { name, sla, cuisines, locality, areaName, cloudinaryImageId } =
-    props.restData.info;
+  const {
+    name,
+    avgRating,
+    sla,
+    cuisines,
+    locality,
+    areaName,
+    cloudinaryImageId,
+  } = props.restData.info;
   return (
     <div className="rest-container">
       <div className="img-cont">
@@ -13,6 +20,7 @@ const RestaurantDetails = (props) => {
         />
       </div>
       <h3>{name}</h3>
+      <p>{avgRating}</p>
       <p>{sla.slaString}</p>
       <p>{cuisines.join(", ")}</p>
       <p>{`${locality}, ${areaName}`}</p>

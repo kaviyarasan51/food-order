@@ -10,6 +10,7 @@ body {
   align-items: center;
   padding: 0px 50px;
   margin-left: 50px;
+  margin-right: 50px;
 }
 
 .logo-container {
@@ -18,15 +19,13 @@ body {
 }
 
 .menu-container {
-  text-align: center;
-  justify-content: center;
   a {
-    margin: 30px;
-    padding: 10px;
+    margin: 20px;
+    padding: 15px;
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif, "Gill Sans", "Gill Sans MT";
     font-weight: bolder;
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 
@@ -60,10 +59,11 @@ a:hover {
 
 .rest-container {
   width: 300px;
-  height: 450px;
-  margin: 10px;
-  border: 1px solid gray;
+  height: auto;
+  margin: 16px;
+  border: 1px solid rgb(129, 127, 127);
   padding: 10px;
+  background-color: rgb(207, 195, 195);
   h3 {
     font-weight: bold;
     color: orangered;
@@ -86,4 +86,15 @@ a:hover {
   img {
     margin: 10px;
   }
+}
+
+.filter {
+  margin: 0px 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.login-btn {
+  width: 70px;
+  height: 20px;
 }
