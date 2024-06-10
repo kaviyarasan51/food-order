@@ -1,10 +1,8 @@
 import RestaurantDetails from "./RestaurantDetails";
 import { useState, useEffect } from "react";
 
-// import * as RestaurantJSONdata from "../../assets/data/restaurant-data.json";
 import { RESTAURANT_LIST_URL } from "../../utils/constants";
 import RestaurantShimmer from "./restaurantShimmer";
-import RestaurantShimmerPage from "./restaurantShimmer";
 
 const RestaurantList = () => {
   const [restaurantList, setRestaurantList] = useState([]);
@@ -29,7 +27,7 @@ const RestaurantList = () => {
           className="filter-btn"
           onClick={() => {
             const filterOutput = restaurantList.filter(
-              (rest) => rest.info.avgRating >= 4.3
+              (rest) => rest.info.avgRating >= 4.5
             );
             setFilteredRestaurantList(filterOutput);
           }}
@@ -80,7 +78,7 @@ const RestaurantList = () => {
     // <div className="loaded">
     //   <h1>Loading...</h1>
     // </div>
-    <RestaurantShimmerPage />
+    <RestaurantShimmer />
   );
 };
 

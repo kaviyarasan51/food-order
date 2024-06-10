@@ -19,6 +19,9 @@ body {
 }
 
 .menu-container {
+  text-align: center;
+  justify-content: center;
+
   a {
     margin: 20px;
     padding: 15px;
@@ -44,16 +47,20 @@ a:hover {
   height: 250px;
   overflow: hidden;
   flex: 1;
+
   .img {
     width: 100%;
     height: 100%;
   }
 }
 
+.main-cont {
+  margin: 20px 50px;
+}
+
 .rest-list-cont {
   display: flex;
   flex-wrap: wrap;
-  margin: 50px;
   /* justify-content: space-evenly; */
 }
 
@@ -63,16 +70,27 @@ a:hover {
   margin: 16px;
   border: 1px solid rgb(129, 127, 127);
   padding: 10px;
+
   background-color: rgb(207, 195, 195);
   h3 {
     font-weight: bold;
     color: orangered;
   }
+
   p {
     font-weight: bold;
     font-family: Arial, sans-serif, Arial, Helvetica, sans-serif;
     font-size: 17px;
   }
+}
+
+.search-cont {
+  margin-top: 10px;
+}
+
+.filter-cont {
+  display: flex;
+  justify-content: space-between;
 }
 
 .footer {
@@ -83,6 +101,7 @@ a:hover {
 
 .banner {
   overflow-x: scroll;
+
   img {
     margin: 10px;
   }
@@ -97,4 +116,35 @@ a:hover {
 .login-btn {
   width: 70px;
   height: 20px;
+}
+
+.login-btn,
+.add-to-cart-btn {
+  width: 100px;
+}
+
+.loader-cont {
+  margin: 0 50px;
+  height: 400px;
+
+  h1 {
+    text-align: center;
+  }
+}
+
+.bg-gray {
+  background-color: #ccc;
+}
+
+.main-min-height {
+  min-height: 400px;
+}
+
+.rest-menu-list-cont {
+  background-color: #ccc;
+  width: 400px;
+  margin: 15px;
+  padding: 20px;
+  border-radius: 5px;
+  margin-left: 0px;
 }
