@@ -17,9 +17,15 @@ const RestaurantOverview = () => {
     const restaurantMenuJSON = await data.json();
     console.log(restaurantMenuJSON);
 
-    const restaurantMenuData =
+    const card1 =
       restaurantMenuJSON.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1]
         .card.card.itemCards;
+
+    const card2 =
+      restaurantMenuJSON.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2]
+        .card.card.itemCards;
+
+    const restaurantMenuData = card1 ? card1 : card2;
     setRestaurantMenuList(restaurantMenuData);
     setRestaurantName(restaurantMenuJSON.data.cards[0].card.card.text);
   };

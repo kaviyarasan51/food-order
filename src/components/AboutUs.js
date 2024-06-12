@@ -1,8 +1,15 @@
+import UserFunction from "./UserFunction";
+import UserClass from "./UserClass";
 const AboutUs = () => {
   return (
-    <div className='main main-min-height'>
+    <div className='main'>
       <div className='main-cont bg-gray'>
-        <h1>About Us</h1>
+        <UserFunction name='Ganapathy' email='Vengada Ganapathy' id='273159' />
+        <UserClass
+          name='Ganapathy from class based comp'
+          email='Vengada Ganapathy from class based comp'
+          id='273159 from class based comp'
+        />
       </div>
     </div>
   );

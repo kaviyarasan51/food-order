@@ -12,15 +12,17 @@ const Header = () => {
   return (
     <div className='header'>
       <div className='logo-container'>
-        <img
-          width='140px'
-          height='100px'
-          src={require("../../assets/images/swiggy.png")}
-        />
+        <Link to='/'>
+          <img
+            width='140px'
+            height='100px'
+            src={require("../../assets/images/swiggy.png")}
+          />
+        </Link>
       </div>
       <div className='menu-container'>
         <Link to='/'>🛒 Home</Link>
-        <Link to='/offers'>🆕 Offers</Link>
+        <Link to='/about'>🆕 About Us</Link>
         <Link to='/help'>🆘 Help</Link>
         <Link to='/contact'>Contact Us</Link>
         <Link to='/help'>Help</Link>
