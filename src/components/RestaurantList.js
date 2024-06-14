@@ -27,7 +27,7 @@ const RestaurantList = () => {
           className="filter-btn"
           onClick={() => {
             const filterOutput = restaurantList.filter(
-              (rest) => rest.info.avgRating >= 4.5
+              (rest) => rest.info.avgRating >= 4.2
             );
             setFilteredRestaurantList(filterOutput);
           }}

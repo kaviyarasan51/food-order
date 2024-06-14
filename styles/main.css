@@ -38,7 +38,7 @@ a:hover {
 
 .img-container {
   display: flex;
-  overflow-x: auto;
+  overflow-x: hidden;
   margin: 0px 50px;
 }
 
@@ -54,13 +54,10 @@ a:hover {
   }
 }
 
-.main-cont {
-  margin: 20px 50px;
-}
-
 .rest-list-cont {
   display: flex;
   flex-wrap: wrap;
+  margin: 0px 30px;
   /* justify-content: space-evenly; */
 }
 
@@ -111,6 +108,7 @@ a:hover {
   margin: 0px 50px;
   display: flex;
   justify-content: space-between;
+  padding: 20px;
 }
 
 .login-btn {
@@ -141,10 +139,39 @@ a:hover {
 }
 
 .rest-menu-list-cont {
-  background-color: #ccc;
-  width: 400px;
+  background-color: #b0b0b0;
+  width: 800px;
+  height: 300px;
   margin: 15px;
   padding: 20px;
   border-radius: 5px;
-  margin-left: 0px;
+  p {
+    width: 500px;
+  }
+}
+
+.btn-container {
+  display: flex;
+  justify-content: flex-start;
+  /* margin: 10px 50px; */
+}
+
+.btn {
+  position: relative;
+  left: 60%;
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+  border-radius: 20px;
+}
+
+.btn:hover {
+  background-color: rgb(246, 138, 98);
+  color: #ccc;
+}
+
+.para {
+  margin: 10px 50px;
+  font-size: xx-large;
+  font-weight: bold;
 }
