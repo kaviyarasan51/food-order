@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { GIT_USER_DETAILS } from "../../utils/constants";
 const UserFunction = (props) => {
-  console.log(props);
   const { name, id, email } = props;
 
   const [registered, setRegistered] = useState(false);
@@ -20,12 +19,11 @@ const UserFunction = (props) => {
   };
 
   useEffect(() => {
-    console.log("use effect called");
     fetchGITRepoList();
   }, []);
 
   return (
-    <div className='rest-menu-list-cont'>
+    <div className='git-menu-list-cont'>
       <h2>Name: {name}</h2>
       <h4>Email: {email}</h4>
       <h4>Id: {id}</h4>
@@ -42,10 +40,14 @@ const UserFunction = (props) => {
         }}>
         {buttonName}
       </button>
-      <h1>Git details</h1>
-      <h3>{`Name - ${userDetails.login}`}</h3>
-      <img src={userDetails.avatar_url} />
-      <h4>{`Git URL - ${userDetails.repos_url}`}</h4>
+      <div className='details-cont'>
+        <div>
+          <h1>Git details</h1>
+          <h3>{`Name - ${userDetails.login}`}</h3>
+          <h4>{`Git URL - ${userDetails.repos_url}`}</h4>
+        </div>
+        <img src={userDetails.avatar_url} width='100' height='100' />
+      </div>
     </div>
   );
 };

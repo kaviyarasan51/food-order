@@ -1,46 +1,109 @@
 import React from "react";
+
+import { GIT_USER_DETAILS } from "../../utils/constants";
+
+import UserChildClass from "./UserChildClass";
 class UserClass extends React.Component {
   constructor(props) {
+    console.log("Parent Constructor called");
     super();
-    console.log(props.name);
-    console.log(props.email);
-    console.log(props.id);
 
     this.state = {
       buttonName: "Register",
       registered: false,
+      count: 0,
+      login: "Sample",
+      avatar_url: "",
+      repos_url: "",
     };
   }
 
+  fetchGITRepoList = async () => {
+    const data = await fetch(GIT_USER_DETAILS);
+    const gitResponse = await data.json();
+    // setUserDetails(gitResponse);
+    this.setState({
+      login: gitResponse.login,
+      avatar_url: gitResponse.avatar_url,
+      repos_url: gitResponse.repos_url,
+    });
+  };
+
   render() {
+    console.log("Parent render called");
     return (
-      <div className='rest-menu-list-cont'>
-        <h2>{this.props.name}</h2>
-        <h4>{this.props.email}</h4>
-        <h4>{this.props.id}</h4>
-        <p>
-          {!this.state.registered
-            ? "Please Register"
-            : "Registration successful"}
-        </p>
-        <button
-          onClick={() => {
-            if (this.state.registered) {
-              this.setState({
-                buttonName: "Register",
-                registered: false,
-              });
-            } else {
-              this.setState({
-                buttonName: "UnRegister",
-                registered: true,
-              });
-            }
-          }}>
-          {this.state.buttonName}
-        </button>
+      <div>
+        <div className='rest-menu-list-cont git-menu-list-cont'>
+          <h2>{this.props.name}</h2>
+          <h4>{this.props.email}</h4>
+          <h4>{this.props.id}</h4>
+          <p>
+            {!this.state.registered
+              ? "Please Register"
+              : "Registration successful"}
+          </p>
+          <button
+            onClick={() => {
+              if (this.state.registered) {
+                this.setState({
+                  buttonName: "Register",
+                  registered: false,
+                });
+              } else {
+                this.setState({
+                  buttonName: "UnRegister",
+                  registered: true,
+                });
+              }
+            }}>
+            {this.state.buttonName}
+          </button>
+          <div className='details-cont'>
+            <div>
+              <h1>Git details in class based component</h1>
+              <h3>{`Name - ${this.state.login}`}</h3>
+              <h4>{`Git URL - ${this.state.repos_url}`}</h4>
+            </div>
+            <img src={this.state.avatar_url} width='100' height='100' />
+          </div>
+          <div className='btn-cont'>
+            <button
+              className='btn-1'
+              onClick={() => {
+                this.setState({
+                  count: this.state.count - 1,
+                });
+              }}>
+              -
+            </button>
+            <p>{this.state.count}</p>
+            <button
+              className='btn-1'
+              onClick={() => {
+                this.setState({
+                  count: this.state.count + 1,
+                });
+              }}>
+              +
+            </button>
+          </div>
+        </div>
+        <UserChildClass name='child'></UserChildClass>
       </div>
     );
+  }
+
+  componentDidMount() {
+    console.log("Parent Component mount called");
+    this.fetchGITRepoList();
+  }
+
+  componentDidUpdate() {
+    console.log("Parent - component did update");
+  }
+
+  componentWillUnmount() {
+    console.log("Parent  - component will unmount");
   }
 }
 

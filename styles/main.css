@@ -135,3 +135,32 @@ a:hover {
   border-radius: 5px;
   margin-left: 0px;
 }
+
+.git-menu-list-cont {
+  background-color: #CCC;
+  width: 60%;
+  margin: 15px;
+  padding: 20px;
+  border-radius: 5px;
+  margin-left: 0px;
+}
+
+.details-cont {
+  display: flex;
+  background-color: #FFF;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.btn-1 {
+  width: 50px;
+}
+
+.btn-cont {
+  margin-top: 10px;
+
+  span {
+    width: 200px;
+  }
+}
