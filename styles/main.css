@@ -37,7 +37,7 @@ a:hover {
 
 .img-container {
   display: flex;
-  overflow-x: auto;
+  overflow-x: hidden;
   margin: 0px 50px;
 }
 
@@ -163,4 +163,10 @@ a:hover {
   span {
     width: 200px;
   }
+}
+
+.btn-container {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 50px;
 }
