@@ -4,13 +4,15 @@ const BannerImage = (props) => {
   const { imageId } = props.bannerContent;
   return (
     <div>
-      {" "}
-      <img
-        src={`${BANNER_LIST_URL}${imageId}`}
-        width="200"
-        height="200"
-        alt="Image"
-      />
+      <a href="#">
+        <img
+          className="ban-img"
+          src={`${BANNER_LIST_URL}${imageId}`}
+          width="144"
+          height="180"
+          alt="Image"
+        />
+      </a>
     </div>
   );
 };

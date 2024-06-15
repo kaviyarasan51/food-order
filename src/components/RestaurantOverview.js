@@ -46,8 +46,8 @@ const RestaurantOverview = () => {
               {restMenu.card.info.imageId ? (
                 <img
                   src={`${RESTAURANT_MENU_LIST}${restMenu.card.info.imageId}`}
-                  width="150"
-                  height="150"
+                  width="100"
+                  height="100"
                   alt="menuImg"
                 />
               ) : (
