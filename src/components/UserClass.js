@@ -3,21 +3,50 @@ import React from "react";
 import { GIT_USER_DETAILS } from "../../utils/constants";
 
 import UserChildClass from "./UserChildClass";
+/**
+ * Class based components
+ * Mounting phase
+ *  constructor
+ *  render
+ *  componentDidMount
+ * Commit / Update phase
+ *  re render
+ *  ComponentDidUpdate
+ * Unmount phase
+ *  ComponentWillUnmount
+ *
+ *
+ * Functional components
+ * [status, setStatus] = useState('');
+ * useEffect(() => {
+ *  // To do some operation
+ * }, [status])
+ * useEffect(() => {
+ * // To do some operation
+ * }, [loginMode])
+ *
+ * this.state = {
+ *  status: '',
+ *  loginMode: '',
+ * }
+ */
 class UserClass extends React.Component {
   constructor(props) {
-    console.log("Parent Constructor called");
+    // console.log("Parent Constructor called");
     super();
 
     this.state = {
       buttonName: "Register",
       registered: false,
       count: 0,
+      count1: 0,
       login: "Sample",
       avatar_url: "",
       repos_url: "",
     };
   }
 
+  timer = null;
   fetchGITRepoList = async () => {
     const data = await fetch(GIT_USER_DETAILS);
     const gitResponse = await data.json();
@@ -30,7 +59,7 @@ class UserClass extends React.Component {
   };
 
   render() {
-    console.log("Parent render called");
+    // console.log("Parent render called");
     return (
       <div>
         <div className='rest-menu-list-cont git-menu-list-cont'>
@@ -76,12 +105,34 @@ class UserClass extends React.Component {
               }}>
               -
             </button>
-            <p>{this.state.count}</p>
+            <p>Count - {this.state.count}</p>
             <button
               className='btn-1'
               onClick={() => {
                 this.setState({
                   count: this.state.count + 1,
+                });
+              }}>
+              +
+            </button>
+          </div>
+
+          <div className='btn-cont'>
+            <button
+              className='btn-1'
+              onClick={() => {
+                this.setState({
+                  count1: this.state.count1 - 1,
+                });
+              }}>
+              -
+            </button>
+            <p>Count1 - {this.state.count1}</p>
+            <button
+              className='btn-1'
+              onClick={() => {
+                this.setState({
+                  count1: this.state.count1 + 1,
                 });
               }}>
               +
@@ -94,16 +145,30 @@ class UserClass extends React.Component {
   }
 
   componentDidMount() {
-    console.log("Parent Component mount called");
+    // console.log("Parent Component mount called");
     this.fetchGITRepoList();
+
+    this.timer = setInterval(() => {
+      console.log("set interval called for class based component");
+    }, 1000);
   }
 
-  componentDidUpdate() {
-    console.log("Parent - component did update");
+  componentDidUpdate(prevProp, prevState) {
+    // console.log("Parent - component did update");
+    console.log(prevProp, prevState);
+
+    if (prevState.count !== this.state.count) {
+      console.log("Count updated");
+    }
+
+    if (prevState.count1 !== this.state.count1) {
+      console.log("Count1 updated");
+    }
   }
 
   componentWillUnmount() {
-    console.log("Parent  - component will unmount");
+    // console.log("Parent  - component will unmount");
+    clearInterval(this.timer);
   }
 }
 

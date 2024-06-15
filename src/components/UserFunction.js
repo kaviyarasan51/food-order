@@ -12,6 +12,8 @@ const UserFunction = (props) => {
     repos_url: "",
   });
 
+  let timer = null;
+
   fetchGITRepoList = async () => {
     const data = await fetch(GIT_USER_DETAILS);
     const gitResponse = await data.json();
@@ -20,6 +22,16 @@ const UserFunction = (props) => {
 
   useEffect(() => {
     fetchGITRepoList();
+  }, []);
+
+  useEffect(() => {
+    timer = setInterval(() => {
+      console.log("set interval called for functional component");
+    }, 1000);
+    return () => {
+      console.log("Interval to be cleared here for functional component");
+      clearInterval(timer);
+    };
   }, []);
 
   return (
