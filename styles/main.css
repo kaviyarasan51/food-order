@@ -107,6 +107,7 @@ a:hover {
 
 .login-btn,
 .add-to-cart-btn {
+  margin-left: 10px;
   width: 100px;
 }
 

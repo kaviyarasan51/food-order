@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import useOnlineStatus from "../custom-hooks/useOnlineStatus";
+
 const Header = () => {
   console.log("Header change");
   const [loginButtonName, setLoginButtonName] = useState(["Login"]);
@@ -8,6 +10,8 @@ const Header = () => {
   useEffect(() => {
     console.log("use effect in header called");
   }, [loginButtonName]);
+
+  const onlineStatus = useOnlineStatus();
 
   return (
     <div className='header'>
@@ -26,6 +30,7 @@ const Header = () => {
         <Link to='/help'>🆘 Help</Link>
         <Link to='/contact'>Contact Us</Link>
         <Link to='/help'>Help</Link>
+        <span>{onlineStatus ? "🟢 Online" : "🔴 Offline"}</span>
         <button
           className='login-btn'
           onClick={() => {
