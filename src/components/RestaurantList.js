@@ -1,28 +1,15 @@
 import RestaurantDetails from "./RestaurantDetails";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
-import { RESTAURANT_LIST_URL } from "../../utils/constants";
 import RestaurantShimmerPage from "./RestaurantShimmerPage";
-
+import useRestaurantList from "../custom-hooks/useRestaurantList";
 const RestaurantList = () => {
-  const [restaurantList, setRestaurantList] = useState([]);
   const [filteredRestaurantList, setFilteredRestaurantList] = useState([]);
   const [searchText, setSearchText] = useState("");
-
+  const restaurantList = useRestaurantList();
   useEffect(() => {
-    console.log("use effect called");
-    fetchRestaurantList();
-  }, []);
-
-  const fetchRestaurantList = async () => {
-    const data = await fetch(RESTAURANT_LIST_URL);
-    const restaurantJSON = await data.json();
-    const restaurantData =
-      restaurantJSON.data.cards[4].card.card.gridElements.infoWithStyle
-        .restaurants;
-    setRestaurantList(restaurantData);
-    setFilteredRestaurantList(restaurantData);
-  };
+    setFilteredRestaurantList(restaurantList);
+  }, [restaurantList]);
 
   return filteredRestaurantList.length ? (
     <div className='main-cont'>
