@@ -5,9 +5,9 @@ const BannerImage = (props) => {
   return (
     <img
       src={`${BANNER_LIST_URL}${imageId}`}
-      width="200"
-      height="200"
-      alt="Image"
+      width='160'
+      height='160'
+      alt='Image'
     />
   );
 };

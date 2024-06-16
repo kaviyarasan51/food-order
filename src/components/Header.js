@@ -14,7 +14,7 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <div className='header'>
+    <div className='header flex justify-between bg-orange-300 px-2 py-2'>
       <div className='logo-container'>
         <Link to='/'>
           <img
@@ -24,15 +24,42 @@ const Header = () => {
           />
         </Link>
       </div>
-      <div className='menu-container'>
-        <Link to='/'>🛒 Home</Link>
-        <Link to='/about'>🆕 About Us</Link>
-        <Link to='/help'>🆘 Help</Link>
-        <Link to='/contact'>Contact Us</Link>
-        <Link to='/help'>Help</Link>
-        <span>{onlineStatus ? "🟢 Online" : "🔴 Offline"}</span>
+      <div className='menu-container flex items-center'>
+        <Link to='/'>
+          <a className='px-3 font-semibold' href='#'>
+            🛒 Home
+          </a>
+        </Link>
+        <Link to='/about'>
+          <a className='px-3 font-semibold' href='#'>
+            🆕 About Us
+          </a>
+        </Link>
+        <Link to='/help'>
+          <a className='px-3 font-semibold' href='#'>
+            🆘 Help
+          </a>
+        </Link>
+        <Link to='/contact'>
+          <a className='px-3 font-semibold' href='#'>
+            Contact Us
+          </a>
+        </Link>
+        <Link to='/help'>
+          <a className='px-3 font-semibold' href='#'>
+            Help
+          </a>
+        </Link>
+        <Link to='/grocery'>
+          <a className='px-3 font-semibold' href='#'>
+            Groceries
+          </a>
+        </Link>
+        <span className='px-3 font-semibold'>
+          {onlineStatus ? "🟢 Online" : "🔴 Offline"}
+        </span>
         <button
-          className='login-btn'
+          className='login-btn px-3 font-semibold'
           onClick={() => {
             setLoginButtonName(
               loginButtonName === "Login" ? "Logout" : "Login"
@@ -41,7 +68,7 @@ const Header = () => {
           {loginButtonName}
         </button>
         <button
-          className='add-to-cart-btn'
+          className='add-to-cart-btn px-3 font-semibold'
           onClick={() => {
             setCartButtonName(
               cartButtonName === "Add to cart" ? "Payment" : "Add to cart"

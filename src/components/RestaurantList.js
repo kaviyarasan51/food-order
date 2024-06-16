@@ -13,8 +13,9 @@ const RestaurantList = () => {
 
   return filteredRestaurantList.length ? (
     <div className='main-cont'>
-      <div className='filter-cont'>
+      <div className='filter-cont flex mx-10 my-3 justify-between'>
         <button
+          className='bg-indigo-900 text-white px-2 py-2 font-normal rounded-md'
           onClick={() => {
             const filteredOutput = restaurantList.filter((rest) => {
               return rest.info.avgRating > 4.5;
@@ -25,6 +26,7 @@ const RestaurantList = () => {
         </button>
         <div className='search-cont'>
           <input
+            className='mr-2 border-solid border-2 border-black-400'
             type='text'
             id='searchInput'
             value={searchText}
@@ -33,6 +35,7 @@ const RestaurantList = () => {
             }}
           />
           <button
+            className='bg-indigo-900 text-white px-2 py-2 font-normal rounded-md'
             onClick={() => {
               const filteredOutput = restaurantList.filter((rest) => {
                 return rest.info.name
@@ -46,6 +49,7 @@ const RestaurantList = () => {
         </div>
 
         <button
+          className='bg-indigo-900 text-white px-2 py-2 font-normal rounded-md'
           onClick={() => {
             setFilteredRestaurantList(restaurantList);
             setSearchText("");
@@ -53,7 +57,7 @@ const RestaurantList = () => {
           Reset
         </button>
       </div>
-      <div className='rest-list-cont'>
+      <div className='rest-list-cont flex flex-wrap mx-10'>
         {filteredRestaurantList.map((rest) => {
           return <RestaurantDetails key={rest?.info?.id} restData={rest} />;
         })}
