@@ -7,7 +7,7 @@ const imgData = ImagesData.data.cards[0].card.card.imageGridCards.info;
 export default Banner = () => {
   return (
     <div>
-      <div className='flex justify-between mx-10 my-3'>
+      <div className='flex justify-between my-3'>
         <p className='font-bold text-2xl'>What's on your mind?</p>
         <div className='btn-container'>
           <button

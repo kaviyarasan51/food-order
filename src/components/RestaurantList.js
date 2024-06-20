@@ -13,7 +13,7 @@ const RestaurantList = () => {
 
   return filteredRestaurantList.length ? (
     <div className='main-cont'>
-      <div className='filter-cont flex mx-10 my-3 justify-between'>
+      <div className='filter-cont flex my-3 justify-between'>
         <button
           className='bg-indigo-900 text-white px-2 py-2 font-normal rounded-md'
           onClick={() => {
@@ -57,7 +57,7 @@ const RestaurantList = () => {
           Reset
         </button>
       </div>
-      <div className='rest-list-cont flex flex-wrap mx-10  mt-6'>
+      <div className='rest-list-cont flex flex-wrap mt-6'>
         {filteredRestaurantList.map((rest) => {
           return <RestaurantDetails key={rest?.info?.id} restData={rest} />;
         })}
