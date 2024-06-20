@@ -26,7 +26,7 @@ const RestaurantList = () => {
         </button>
         <div className='search-cont'>
           <input
-            className='mr-2 border-solid border-2 border-black-400'
+            className='border border-gray-500 rounded w-4/6 mx-2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
             type='text'
             id='searchInput'
             value={searchText}
@@ -57,7 +57,7 @@ const RestaurantList = () => {
           Reset
         </button>
       </div>
-      <div className='rest-list-cont flex flex-wrap mx-10'>
+      <div className='rest-list-cont flex flex-wrap mx-10  mt-6'>
         {filteredRestaurantList.map((rest) => {
           return <RestaurantDetails key={rest?.info?.id} restData={rest} />;
         })}
