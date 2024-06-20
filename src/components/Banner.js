@@ -26,7 +26,7 @@ export default Banner = () => {
           </button>
         </div>
       </div>
-      <div className='img-container flex mx-10 overflow-hidden' id='container'>
+      <div className='img-container flex overflow-hidden' id='container'>
         {imgData.map((banner) => {
           return <BannerImage key={banner.id} bannerContent={banner} />;
         })}
