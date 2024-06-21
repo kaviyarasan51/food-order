@@ -24,59 +24,65 @@ const Header = () => {
           />
         </Link>
       </div>
-      <div className='menu-container flex items-center'>
+      <ul className='menu-container flex items-center'>
         <Link to='/'>
-          <a className='px-3 font-semibold' href='#'>
+          <li className='px-3 font-semibold' href='#'>
             🛒 Home
-          </a>
+          </li>
         </Link>
         <Link to='/about'>
-          <a className='px-3 font-semibold' href='#'>
+          <li className='px-3 font-semibold' href='#'>
             🆕 About Us
-          </a>
+          </li>
         </Link>
         <Link to='/help'>
-          <a className='px-3 font-semibold' href='#'>
+          <li className='px-3 font-semibold' href='#'>
             🆘 Help
-          </a>
+          </li>
         </Link>
         <Link to='/contact'>
-          <a className='px-3 font-semibold' href='#'>
+          <li className='px-3 font-semibold' href='#'>
             Contact Us
-          </a>
+          </li>
         </Link>
         <Link to='/help'>
-          <a className='px-3 font-semibold' href='#'>
+          <li className='px-3 font-semibold' href='#'>
             Help
-          </a>
+          </li>
         </Link>
         <Link to='/grocery'>
-          <a className='px-3 font-semibold' href='#'>
+          <li className='px-3 font-semibold' href='#'>
             Groceries
-          </a>
+          </li>
         </Link>
-        <span className='px-3 font-semibold'>
-          {onlineStatus ? "🟢 Online" : "🔴 Offline"}
-        </span>
-        <button
-          className='login-btn px-3 font-semibold'
-          onClick={() => {
-            setLoginButtonName(
-              loginButtonName === "Login" ? "Logout" : "Login"
-            );
-          }}>
-          {loginButtonName}
-        </button>
-        <button
-          className='add-to-cart-btn px-3 font-semibold'
-          onClick={() => {
-            setCartButtonName(
-              cartButtonName === "Add to cart" ? "Payment" : "Add to cart"
-            );
-          }}>
-          {cartButtonName}
-        </button>
-      </div>
+        <li>
+          <span className='px-3 font-semibold'>
+            {onlineStatus ? "🟢 Online" : "🔴 Offline"}
+          </span>
+        </li>
+        <li>
+          <button
+            className='login-btn px-3 font-semibold'
+            onClick={() => {
+              setLoginButtonName(
+                loginButtonName === "Login" ? "Logout" : "Login"
+              );
+            }}>
+            {loginButtonName}
+          </button>
+        </li>
+        <li>
+          <button
+            className='add-to-cart-btn px-3 font-semibold'
+            onClick={() => {
+              setCartButtonName(
+                cartButtonName === "Add to cart" ? "Payment" : "Add to cart"
+              );
+            }}>
+            {cartButtonName}
+          </button>
+        </li>
+      </ul>
     </div>
   );
 };

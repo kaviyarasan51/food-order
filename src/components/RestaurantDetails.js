@@ -45,3 +45,14 @@ const RestaurantDetails = (props) => {
 };
 
 export default RestaurantDetails;
+
+export const RecommendedRestaurantDetails = (RestaurantDetails) => {
+  return (props) => {
+    return (
+      <div>
+        <label className='bg-red-400 text-white px-2 absolute'>Promoted</label>
+        <RestaurantDetails {...props} />
+      </div>
+    );
+  };
+};

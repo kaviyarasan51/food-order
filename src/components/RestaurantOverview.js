@@ -1,31 +1,56 @@
 import { useParams } from "react-router-dom";
 import useRestaurantMenuList from "../custom-hooks/useRestaurantMenuList";
+import RestaurantMenuListItem from "./RestaurantMenuListItem";
+
 const RestaurantOverview = () => {
   let { id } = useParams();
   const menuDetails = useRestaurantMenuList(id);
-  const restaurantMenuList = menuDetails.menuList;
+  // const restaurantMenuList = menuDetails.menuList;
   const restaurantName = menuDetails.restaurantName;
+  const cardDetails = menuDetails.cardDetails;
 
-  return restaurantMenuList.length ? (
-    <div className='main-cont'>
-      <h1>{restaurantName}</h1>
-      {restaurantMenuList.map((restMenu) => {
-        const price = restMenu.card.info.price
-          ? restMenu.card.info.price
-          : restMenu.card.info.defaultPrice;
-        const rating = restMenu.card.info.ratings.aggregatedRating.rating
-          ? restMenu.card.info.ratings.aggregatedRating.rating
-          : "No rating";
-        const ratingCountV2 = restMenu.card.info.ratings.aggregatedRating
-          .ratingCountV2
-          ? restMenu.card.info.ratings.aggregatedRating.ratingCountV2
-          : "No rating";
+  const categories = cardDetails.filter((category) => {
+    return (
+      category.card.card["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory" ||
+      category.card.card["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"
+    );
+  });
+
+  return cardDetails.length ? (
+    <div className='main-cont w-10/12 m-auto'>
+      <h1 className='font-extrabold text-2xl my-5'>{restaurantName}</h1>
+      {categories.map((category) => {
         return (
-          <div className='rest-menu-list-cont'>
-            <h3>{restMenu.card.info.name}</h3>
-            <div>{`$ ${price / 100}`}</div>
-            <div>{`${rating} (${ratingCountV2})`}</div>
-            <div>Info</div>
+          <div className='shadow-lg shadow-gray-300 my-5'>
+            <div className='flex bg-gray-300 px-3 py-2'>
+              <p className='w-11/12 font-semibold text-xl'>
+                {category.card.card.title}
+              </p>
+              <p className='w-1/12'>🔽</p>
+            </div>
+            <div className='px-3 py-2'>
+              {category.card.card["@type"] ===
+              "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory" ? (
+                category.card.card.categories.map((subCategory) => {
+                  return (
+                    <div>
+                      <p className='font-medium text-xl'>{subCategory.title}</p>
+                      {subCategory.itemCards.map((items) => {
+                        return <RestaurantMenuListItem cardItems={items} />;
+                      })}
+                    </div>
+                  );
+                })
+              ) : (
+                <div>
+                  {category.card.card.itemCards.map((items) => {
+                    return <RestaurantMenuListItem cardItems={items} />;
+                  })}
+                </div>
+              )}
+            </div>
           </div>
         );
       })}

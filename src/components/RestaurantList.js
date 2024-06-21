@@ -1,4 +1,6 @@
-import RestaurantDetails from "./RestaurantDetails";
+import RestaurantDetails, {
+  RecommendedRestaurantDetails,
+} from "./RestaurantDetails";
 import { useState, useEffect } from "react";
 
 import RestaurantShimmerPage from "./RestaurantShimmerPage";
@@ -7,6 +9,9 @@ const RestaurantList = () => {
   const [filteredRestaurantList, setFilteredRestaurantList] = useState([]);
   const [searchText, setSearchText] = useState("");
   const restaurantList = useRestaurantList();
+
+  const RecommendedCardDetails =
+    RecommendedRestaurantDetails(RestaurantDetails);
   useEffect(() => {
     setFilteredRestaurantList(restaurantList);
   }, [restaurantList]);
@@ -59,7 +64,11 @@ const RestaurantList = () => {
       </div>
       <div className='rest-list-cont flex flex-wrap mt-6'>
         {filteredRestaurantList.map((rest) => {
-          return <RestaurantDetails key={rest?.info?.id} restData={rest} />;
+          return rest?.info?.avgRating >= 4.5 ? (
+            <RecommendedCardDetails key={rest?.info?.id} restData={rest} />
+          ) : (
+            <RestaurantDetails key={rest?.info?.id} restData={rest} />
+          );
         })}
       </div>
     </div>
