@@ -6,9 +6,14 @@ const RestaurantCategory = (props) => {
   const category = props.category;
 
   const [showDetails, setShowDetails] = useState(false);
+  const [showSubCategory, setShowSubCategory] = useState(false);
 
   const shoHideDetailsMenu = () => {
     setShowDetails(!showDetails);
+  };
+
+  const showHideSubCategory = () => {
+    setShowSubCategory(!showSubCategory);
   };
 
   return (
@@ -31,18 +36,29 @@ const RestaurantCategory = (props) => {
             <div>
               {category.card.card.categories.map((subCategory) => {
                 return (
-                  <div className='mx-7 mt-4' key={subCategory.title}>
-                    <p className='font-semibold text-lg bg-gray-200 px-2 py-2'>
-                      {subCategory.title}
-                    </p>
-                    {subCategory.itemCards.map((categoryItem) => {
-                      return (
-                        <RestaurantMenuListItem
-                          key={categoryItem.card.info.id}
-                          cardItems={categoryItem}
-                        />
-                      );
-                    })}
+                  <div className='mx-7 my-4' key={subCategory.title}>
+                    <div
+                      className='px-2 py-2 flex justify-between  bg-gray-200 cursor-pointer'
+                      onClick={showHideSubCategory}>
+                      <p className='font-semibold text-lg '>
+                        {subCategory.title}
+                      </p>
+                      <p>⏬</p>
+                    </div>
+                    {showSubCategory ? (
+                      <div>
+                        {subCategory.itemCards.map((categoryItem) => {
+                          return (
+                            <RestaurantMenuListItem
+                              key={categoryItem.card.info.id}
+                              cardItems={categoryItem}
+                            />
+                          );
+                        })}
+                      </div>
+                    ) : (
+                      <div></div>
+                    )}
                   </div>
                 );
               })}
