@@ -28,8 +28,10 @@ const RestaurantOverview = () => {
           <RestaurantCategory
             key={category.card.card.title}
             category={category}
-            showDetails={index === showIndex && showIndex !== -1 ? true : false}
-            setShowIndex={() => setShowIndex(index !== showIndex ? index : -1)}
+            showDetails={index === showIndex ? true : false}
+            setShowIndex={() =>
+              setShowIndex(index !== showIndex ? index : null)
+            }
           />
         );
       })}

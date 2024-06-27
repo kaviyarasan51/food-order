@@ -35,14 +35,11 @@ const RestaurantCategory = (props) => {
                   <RestaurantSubCategory
                     subCategory={subCategory}
                     showSubCategoryDetails={
-                      index === showSubCategoryIndex &&
-                      showSubCategoryIndex !== -1
-                        ? true
-                        : false
+                      index === showSubCategoryIndex ? true : false
                     }
                     setShowSubCategoryIndex={() =>
                       setShowSubCategoryIndex(
-                        index !== showSubCategoryIndex ? index : -1
+                        index !== showSubCategoryIndex ? index : null
                       )
                     }
                   />
