@@ -13,7 +13,9 @@ const RestaurantSubCategory = (props) => {
       <div
         className='px-2 py-1 flex justify-between  bg-gray-200 cursor-pointer'
         onClick={showHideSubCategory}>
-        <p className='font-semibold text-sm select-none'>{subCategory.title}</p>
+        <p className='font-semibold text-base select-none'>
+          {subCategory.title}
+        </p>
         <p className='select-none'>⏬</p>
       </div>
       {showSubCategoryDetails ? (
