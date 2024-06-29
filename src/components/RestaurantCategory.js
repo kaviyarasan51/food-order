@@ -1,31 +1,31 @@
 import { useState } from "react";
+import RestaurantMenuListItem from "./RestaurantMenuListItem";
 import RestaurantSubCategory from "./RestaurantSubCategory";
 
-import RestaurantMenuListItem from "./RestaurantMenuListItem";
-
 const RestaurantCategory = (props) => {
-  const { category, showDetails, setShowIndex } = props;
+  const category = props.category;
+  const expandHideCategoryParameter = props.expandHideCategoryParameter;
+  const expandFunction = props.expandFunction;
 
-  const [showSubCategoryIndex, setShowSubCategoryIndex] = useState(0);
-
-  const showHideDetailsMenu = () => {
-    setShowIndex();
+  const shoHideDetailsMenu = () => {
+    expandFunction();
   };
 
+  const [expandSubCategoryIndex, setExpandSubCategoryIndex] = useState(1);
   return (
-    <div className='shadow-lg shadow-gray-400 mb-3'>
+    <div className='shadow-lg shadow-gray-400 mb-5'>
       <div
         className='flex justify-between bg-gray-300 py-2 px-5 cursor-pointer'
-        onClick={showHideDetailsMenu}>
-        <p className='font-semibold text-lg select-none'>
+        onClick={shoHideDetailsMenu}>
+        <p className='font-semibold text-lg'>
           {category.card.card.title}
           {category.card.card?.itemCards?.length
             ? " (" + category.card.card?.itemCards?.length + " )"
             : ""}
         </p>
-        <p className='select-none'>⏬</p>
+        <p>⏬</p>
       </div>
-      {showDetails ? (
+      {expandHideCategoryParameter ? (
         <div>
           {category.card.card["@type"] ===
           "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory" ? (
@@ -33,15 +33,15 @@ const RestaurantCategory = (props) => {
               {category.card.card.categories.map((subCategory, index) => {
                 return (
                   <RestaurantSubCategory
-                    subCategory={subCategory}
-                    showSubCategoryDetails={
-                      index === showSubCategoryIndex ? true : false
+                    expandSubCategoryParameter={
+                      index === expandSubCategoryIndex ? true : false
                     }
-                    setShowSubCategoryIndex={() =>
-                      setShowSubCategoryIndex(
-                        index !== showSubCategoryIndex ? index : null
+                    expandFunction={() =>
+                      setExpandSubCategoryIndex(
+                        index === expandSubCategoryIndex ? null : index
                       )
                     }
+                    subCategory={subCategory}
                   />
                 );
               })}

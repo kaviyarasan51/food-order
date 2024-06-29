@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import useOnlineStatus from "../custom-hooks/useOnlineStatus";
+import UserContext from "../../utils/UserContext";
 
 const Header = () => {
   console.log("Header change");
@@ -11,7 +12,13 @@ const Header = () => {
     console.log("use effect in header called");
   }, [loginButtonName]);
 
+  const userDetails = useContext(UserContext);
+
   const onlineStatus = useOnlineStatus();
+
+  const updateName = () => {
+    userDetails.setUserName("DVG");
+  };
 
   return (
     <div className='header flex justify-between bg-orange-300 px-2 py-2'>
@@ -71,6 +78,14 @@ const Header = () => {
             {loginButtonName}
           </button>
         </li>
+        <li>
+          <button
+            className='bg-blue-500 px-2 py-2 rounded-lg'
+            onClick={updateName}>
+            Update Name
+          </button>
+        </li>
+        <li>{userDetails.loggedUser}</li>
         <li>
           <button
             className='add-to-cart-btn px-3 font-semibold'

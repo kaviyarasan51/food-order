@@ -1,6 +1,8 @@
+import { useContext } from "react";
 import { RESTAURANT_LIST_IMAGE_URL } from "../../utils/constants";
 
 import { Link } from "react-router-dom";
+import UserContext from "../../utils/UserContext";
 
 const RestaurantDetails = (props) => {
   const {
@@ -13,6 +15,8 @@ const RestaurantDetails = (props) => {
     areaName,
     cloudinaryImageId,
   } = props?.restData?.info;
+
+  const userDetails = useContext(UserContext);
   return (
     <div className='rest-container w-[280] mr-8 mb-8 rounded-2xl'>
       <div className='img-cont w-full h-[150] m-auto overflow-hidden rounded-2xl'>
@@ -40,6 +44,7 @@ const RestaurantDetails = (props) => {
 
       <p className=''>{cuisines.join(", ")}</p>
       <p className=''>{`${locality}, ${areaName}`}</p>
+      <p>Created by: {userDetails.loggedUser}</p>
     </div>
   );
 };
