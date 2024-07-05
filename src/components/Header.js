@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import useOnlineStatus from "../custom-hooks/useOnlineStatus";
 import UserContext from "../../utils/UserContext";
@@ -19,6 +20,10 @@ const Header = () => {
   const updateName = () => {
     userDetails.setUserName("DVG");
   };
+
+  const cartSelector = useSelector((store) => {
+    return store.cart.items;
+  });
 
   return (
     <div className='header flex justify-between bg-orange-300 px-2 py-2'>
@@ -62,6 +67,12 @@ const Header = () => {
             Groceries
           </li>
         </Link>
+        <li>
+          Cart
+          <div className='mx-2 inline-block w-6 h-6 rounded-full bg-gray-500 text-center'>
+            {cartSelector.length}
+          </div>
+        </li>
         <li>
           <span className='px-3 font-semibold'>
             {onlineStatus ? "🟢 Online" : "🔴 Offline"}

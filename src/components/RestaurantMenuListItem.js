@@ -1,12 +1,22 @@
+import { useDispatch } from "react-redux";
+
 import { MENU_DETAILS_IMAGE_URL } from "../../utils/constants";
+import { addItem } from "../store/CartSlice";
 
 const RestaurantMenuListItem = (props) => {
   const { id, imageId, ratings, defaultPrice, name, price, description } =
     props?.cardItems?.card?.info;
 
+  const dispatch = useDispatch();
+
   const addItemsToCart = () => {
     console.log("called");
+    // Action to be dispatched
+    // props?.cardItems
+
+    dispatch(addItem(props.cardItems));
   };
+
   return (
     <div className='mx-10 py-5 border-b-2 flex justify-between'>
       <div>
