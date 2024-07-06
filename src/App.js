@@ -14,14 +14,15 @@ import Help from "./components/Help";
 import ErrorPage from "./components/ErrorPage";
 import RestaurantOverview from "./components/RestaurantOverview";
 import UserContext from "../utils/UserContext";
-import appStore from "./store/app.store";
+import AppStore from "./store/app.store";
+import Cart from "./components/Cart";
 // import Groceries from "./components/Groceries";
 
 const AppLayout = () => {
   const [userName, setUserName] = useState("Ganapathy");
   return (
     <div className='main-container'>
-      <Provider store={appStore}>
+      <Provider store={AppStore}>
         <UserContext.Provider value={{ loggedUser: userName, setUserName }}>
           <Header />
           <Outlet />
@@ -72,6 +73,10 @@ const appRouter = createBrowserRouter([
             <Groceries />
           </Suspense>
         ),
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },

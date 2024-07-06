@@ -68,10 +68,12 @@ const Header = () => {
           </li>
         </Link>
         <li>
-          Cart
-          <div className='mx-2 inline-block w-6 h-6 rounded-full bg-gray-500 text-center'>
-            {cartSelector.length}
-          </div>
+          <Link to='/cart'>
+            Cart
+            <div className='mx-2 inline-block w-6 h-6 rounded-full bg-gray-500 text-center'>
+              {cartSelector.length}
+            </div>
+          </Link>
         </li>
         <li>
           <span className='px-3 font-semibold'>
